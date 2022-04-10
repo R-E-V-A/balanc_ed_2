@@ -1,4 +1,4 @@
-import 'package:balanc_ed_2/Pages/ChatPage/ChartPage.dart';
+import 'package:balanc_ed_2/Pages/ChatPage/ChatPage.dart';
 import 'package:balanc_ed_2/Pages/Profile/MyProfile.dart';
 import 'package:balanc_ed_2/Routes.dart';
 import 'package:balanc_ed_2/Services/SharedPreferences.dart';
@@ -46,7 +46,7 @@ class SplashScreen extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ChartPage(),
+      home: const ChatPage(),
       // home: SignUpPage(title: "Signup page")
       // home: const LoginPage()
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),

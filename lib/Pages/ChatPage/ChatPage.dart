@@ -1,14 +1,21 @@
+import 'package:balanc_ed_2/Constants/Fonts&Themes.dart';
+import 'package:balanc_ed_2/Pages/ChatPage/components/Message.dart';
+import 'package:balanc_ed_2/Services/ChatService.dart';
 import 'package:flutter/material.dart';
 
-class ChartPage extends StatefulWidget {
-  const ChartPage({Key? key}) : super(key: key);
+import '../../Models/ChatModels.dart';
+
+class ChatPage extends StatefulWidget {
+  const ChatPage({Key? key}) : super(key: key);
 
   @override
-  State<ChartPage> createState() => _ChartPageState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class _ChartPageState extends State<ChartPage> {
+class _ChatPageState extends State<ChatPage> {
   final _formKey = GlobalKey<FormState>();
+  final _questionController = TextEditingController();
+  var messages = List<Message>.empty(growable: true);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +28,9 @@ class _ChartPageState extends State<ChartPage> {
               padding: EdgeInsets.only(top: 48, left: 24),
               child: Text(
                 "Chat",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                style: paraText.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                   fontSize: 40,
                 ),
               ),
@@ -37,7 +45,16 @@ class _ChartPageState extends State<ChartPage> {
                             BorderSide(width: 4.0, color: Colors.deepPurple))),
               ),
             ),
-            Expanded(child: Container()),
+            Expanded(
+                child: Container(
+                    padding: EdgeInsets.only(top: 8, left: 8, right: 8),
+                    child: SingleChildScrollView(
+                      child: Column(
+                          children: messages
+                              .map((e) => MessageComponent(
+                                  content: e.content, isSender: e.isSender))
+                              .toList()),
+                    ))),
             Container(
               color: Colors.grey.withOpacity(0.1),
               width: MediaQuery.of(context).size.width,
@@ -65,6 +82,7 @@ class _ChartPageState extends State<ChartPage> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 8.0),
                                   child: TextFormField(
+                                    controller: _questionController,
                                     decoration: const InputDecoration(
                                       border: OutlineInputBorder(
                                           borderRadius: BorderRadius.all(
@@ -78,8 +96,23 @@ class _ChartPageState extends State<ChartPage> {
                                 child: CircleAvatar(
                                   backgroundColor: Colors.blueAccent,
                                   child: IconButton(
-                                    onPressed: () {
-                                      if (_formKey.currentState!.validate()) {}
+                                    onPressed: () async {
+                                      if (_formKey.currentState!.validate()) {
+                                        setState(() {
+                                          messages.add(Message(
+                                              isSender: true,
+                                              content:
+                                                  _questionController.text));
+                                          _questionController.text = "";
+                                        });
+                                        var answer = await sendQuestion(
+                                            question: _questionController.text);
+                                        setState(() {
+                                          messages.add(Message(
+                                              isSender: false,
+                                              content: answer?.answer ?? ""));
+                                        });
+                                      }
                                     },
                                     // style: ButtonStyle(
                                     //   backgroundColor:
