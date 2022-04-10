@@ -28,7 +28,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late List<NewsClass> data;
-  var paraText = const TextStyle();
 
   // GetServices getServices = GetServices();
   Future<List<NewsClass>> getNewsItems() async {

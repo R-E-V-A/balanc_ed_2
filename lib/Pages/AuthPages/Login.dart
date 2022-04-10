@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-// import 'package:resolvers/Constants/Fonts&Themes.dart';
+import 'package:balanc_ed_2/Constants/Fonts&Themes.dart';
 // import 'package:resolvers/Services/PostServices.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -28,8 +28,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
-    var paraText = const TextStyle();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
