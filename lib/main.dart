@@ -1,5 +1,8 @@
+import 'package:balanc_ed_2/Pages/AuthPages/Signup.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
+import 'Pages/AuthPages/Login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: SignUpPage(title: "Signup page")
+        // home: const LoginPage()
+        // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        );
   }
 }
 
