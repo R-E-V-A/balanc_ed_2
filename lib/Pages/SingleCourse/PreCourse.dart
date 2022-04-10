@@ -16,7 +16,6 @@ class PreCourse extends StatefulWidget {
 }
 
 class _PreCourseState extends State<PreCourse> {
-  var paraText = const TextStyle();
   var demoText = "";
 
   @override
@@ -78,7 +77,7 @@ class _PreCourseState extends State<PreCourse> {
                         color: Color(0xfff2ebe8),
                         borderRadius: BorderRadius.circular(30),
                         image: DecorationImage(
-                          image: AssetImage("assets/prenroll.png"),
+                          image: AssetImage("assets/images/prenroll.png"),
                         )),
                   ),
                   SizedBox(

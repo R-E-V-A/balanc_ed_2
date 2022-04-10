@@ -12,8 +12,6 @@ class PostCourse extends StatefulWidget {
 }
 
 class _PostCourseState extends State<PostCourse> {
-  var paraText = const TextStyle();
-
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -73,7 +71,7 @@ class _PostCourseState extends State<PostCourse> {
                         color: Color(0xfff2ebe8),
                         borderRadius: BorderRadius.circular(30),
                         image: DecorationImage(
-                          image: AssetImage("assets/prenroll.png"),
+                          image: AssetImage("assets/images/prenroll.png"),
                         )),
                   ),
                   SizedBox(

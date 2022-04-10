@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                                           child: Image(
                                             fit: BoxFit.contain,
                                             image: AssetImage(
-                                              "assets/cnn.png",
+                                              "assets/images/cnn.png",
                                             ),
                                           ),
                                         ),

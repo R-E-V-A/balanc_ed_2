@@ -90,9 +90,6 @@ class _LearningPageState extends State<LearningPage> {
     Icons.format_line_spacing
   ];
 
-  var paraText = const TextStyle();
-  var reva = const TextStyle();
-
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
