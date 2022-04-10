@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 class SignUpTextFieldMobile extends StatefulWidget {
   double width;
   double height;
-  String title;
-  TextEditingController controller;
+  String? title;
+  TextEditingController? controller;
   int? privacy;
 
   SignUpTextFieldMobile(
       {Key? key,
       required this.width,
       required this.height,
-      required this.title,
-      required this.controller,
+      this.title,
+      this.controller,
       this.privacy})
       : super(key: key);
 
