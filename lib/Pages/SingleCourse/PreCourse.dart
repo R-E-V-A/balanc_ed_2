@@ -26,7 +26,7 @@ class _PreCourseState extends State<PreCourse> {
       backgroundColor: Color(0xffe5e5e5),
       body: Padding(
         padding: EdgeInsets.only(
-            top: 0.05 * height, left: 0.07 * width, right: 0.07 * width),
+            top: 0.07 * height, left: 0.07 * width, right: 0.07 * width),
         child: Stack(
           children: [
             SingleChildScrollView(
@@ -132,36 +132,52 @@ class _PreCourseState extends State<PreCourse> {
                 ],
               ),
             ),
-            Positioned(
-              bottom: height * 0.01,
-              left: 0.02 * width,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PostCourse(
-                          titleText: widget.titleText,
-                        ),
-                      ));
-                },
-                child: Container(
-                  height: 0.08 * height,
-                  width: 0.75 * width,
-                  margin: const EdgeInsets.only(bottom: 6.0),
-                  //Same as `blurRadius` i guess
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    color: Color(0xff22319e),
-                  ),
-                  child: Center(
-                      child: Text(
-                    "Enroll this course",
-                    style: paraText.copyWith(
-                        fontSize: 20, fontWeight: FontWeight.w500),
-                  )),
-                ),
-              ),
+            // Positioned(
+            //   bottom: height * 0.01,
+            //   left: 0.02 * width,
+            //   child: GestureDetector(
+            //     onTap: () {
+            //       Navigator.push(
+            //           context,
+            //           MaterialPageRoute(
+            //             builder: (context) => PostCourse(
+            //               titleText: widget.titleText,
+            //             ),
+            //           ));
+            //     },
+            //     child: Container(
+            //       height: 0.08 * height,
+            //       width: 0.75 * width,
+            //       margin: const EdgeInsets.only(bottom: 6.0),
+            //       //Same as `blurRadius` i guess
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(15.0),
+            //         color: Color(0xff22319e),
+            //       ),
+            //       child: Center(
+            //           child: Text(
+            //         "Enroll this course",
+            //         style: paraText.copyWith(
+            //             fontSize: 20, fontWeight: FontWeight.w500),
+            //       )),
+            //     ),
+            //   ),
+            // ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: TextButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.deepPurple)),
+                      onPressed: () {},
+                      child: const Text("Enroll this course",
+                          style: TextStyle(color: Colors.white))),
+                )
+              ],
             ),
           ],
         ),

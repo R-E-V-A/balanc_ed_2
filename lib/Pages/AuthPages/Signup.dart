@@ -13,8 +13,8 @@ import 'Components/SignUpTextFieldMobile.dart';
 import 'Components/SignUpTextField.dart';
 
 class SignUpPage extends StatefulWidget {
-  SignUpPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  SignUpPage({Key? key, this.title}) : super(key: key);
+  String? title;
 
   @override
   _SignUpPageState createState() => _SignUpPageState();

@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 0.04 * width),
+                    padding: EdgeInsets.only(left: 0.04 * width, top: 32),
                     child: Text(
                       "Home",
                       style: paraText.copyWith(

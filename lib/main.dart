@@ -1,16 +1,40 @@
-import 'package:balanc_ed_2/Pages/AuthPages/Signup.dart';
-import 'package:balanc_ed_2/Pages/Home/Homepage.dart';
+import 'package:balanc_ed_2/Pages/Profile/MyProfile.dart';
+import 'package:balanc_ed_2/Routes.dart';
+import 'package:balanc_ed_2/Services/SharedPreferences.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:balanc_ed_2/Constants/Fonts&Themes.dart';
 
+import 'Pages/AuthPages/AboutPage.dart';
 import 'Pages/AuthPages/Login.dart';
+import 'Pages/AuthPages/Signup.dart';
+import 'Pages/BudgetDiary/BudgetHome.dart';
+import 'Pages/Home/Homepage.dart';
+import 'Pages/WandPages/BudgetScore.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(SplashScreen());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+var routes = <String, WidgetBuilder>{
+  Routes.SignUpPage: (BuildContext context) => SignUpPage(),
+  Routes.LogInPage: (BuildContext context) => LoginPage(),
+  Routes.MyProfilePage: (BuildContext context) => MyProfile(),
+  Routes.HomePage: (BuildContext context) => HomePage(),
+  Routes.splashPage: (BuildContext context) => SplashScreen(),
+  Routes.aboutPage: (BuildContext context) => AboutPage(),
+  Routes.budgetScorePage: (BuildContext context) => BudgetScore(),
+  Routes.budgetHomePage: (BuildContext context) => BudgetHome(),
+  Routes.splashPage: (BuildContext context) => SplashScreen()
+};
+
+class SplashScreen extends StatelessWidget {
+  SplashScreen({Key? key}) : super(key: key);
+  String? token = "";
+
+  loadData() async {
+    token = await getToken(key: "token1");
+  }
 
   // This widget is the root of your application.
   @override
