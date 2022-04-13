@@ -5,6 +5,7 @@ import 'package:balanc_ed_2/Services/SharedPreferences.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:balanc_ed_2/Constants/Fonts&Themes.dart';
+import 'package:go_router/go_router.dart';
 
 import 'Pages/AuthPages/AboutPage.dart';
 import 'Pages/AuthPages/Login.dart';
@@ -12,6 +13,8 @@ import 'Pages/AuthPages/Signup.dart';
 import 'Pages/BudgetDiary/BudgetHome.dart';
 import 'Pages/Home/Homepage.dart';
 import 'Pages/WandPages/BudgetScore.dart';
+
+import 'package:balanc_ed_2/Routes.dart';
 
 void main() {
   runApp(SplashScreen());
@@ -40,26 +43,43 @@ class SplashScreen extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const ChatPage(),
+    return MaterialApp.router(
+      routeInformationParser: _router.routeInformationParser,
+      routerDelegate: _router.routerDelegate,
+      title: "GoRouter Example",
+      // debugShowCheckedModeBanner: false,
+      // title: 'Flutter Demo',
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
+      // home: const ChatPage(),
       // home: SignUpPage(title: "Signup page")
       // home: const LoginPage()
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
+
+  final GoRouter _router = GoRouter(routes: <GoRoute>[
+    GoRoute(
+        path: "/",
+        builder: (BuildContext context, GoRouterState state) =>
+            const OnboardingPage()),
+    GoRoute(
+      path: "/home",
+      builder: (BuildContext context, GoRouterState state) => const HomePage()
+    ),
+    GoRoute(
+        path: "/profile",
+        builder: (BuildContext context, GoRouterState state) => const MyProfile()
+    )
+  ]);
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+class OnboardingPage extends StatefulWidget {
+  const OnboardingPage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<OnboardingPage> createState() => _OnboardingPageState();
 }
 
 class OnBoardingPage {
@@ -68,7 +88,7 @@ class OnBoardingPage {
   OnBoardingPage(this.title, this.subtitle, this.image);
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _OnboardingPageState extends State<OnboardingPage> {
   OnBoardingPage getOnBoardingData(int index) {
     var onBoardingDataList = [
       OnBoardingPage(
@@ -146,7 +166,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 32.0),
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go("/home");
+                  },
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.deepPurple)),

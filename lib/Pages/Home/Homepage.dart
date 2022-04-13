@@ -13,6 +13,7 @@ import 'package:balanc_ed_2/Constants/Fonts&Themes.dart';
 // import 'package:resolvers/Routes.dart';
 // import 'package:resolvers/Screens/BudgetDiary/AddRecord.dart';
 import 'package:balanc_ed_2/Pages/SingleCourse/PreCourse.dart';
+import 'package:go_router/go_router.dart';
 
 // import 'package:resolvers/Screens/StoryScreens/StoryPage.dart';
 // import 'package:resolvers/Services/FlutterTextToSpeech.dart';
@@ -258,16 +259,14 @@ class _HomePageState extends State<HomePage> {
               if (val != currIndex) {
                 currIndex = val;
                 if (val == 0) {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/HomePage', (Route<dynamic> route) => false);
+                  GoRouter.of(context).go("/home");
                 }
                 /*else if (val == 1) {
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       '/BudgetHomePage', (Route<dynamic> route) => false);
                 } */
                 else if (val == 1) {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/MyProfilePage', (Route<dynamic> route) => false);
+                  GoRouter.of(context).go("/profile");
                 }
               }
             });

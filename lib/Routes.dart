@@ -1,3 +1,7 @@
+import 'package:balanc_ed_2/Pages/Home/Homepage.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
+
 class Routes {
   static const String SignUpPage = "/SignUpPage";
   static const String LogInPage = "/LogInPage";

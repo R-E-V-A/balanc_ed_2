@@ -14,6 +14,7 @@ import 'package:balanc_ed_2/Pages/Profile/SoloGoals.dart';
 import 'package:balanc_ed_2/Services/GetServices.dart';
 import 'package:balanc_ed_2/Services/PostServices.dart';
 import 'package:balanc_ed_2/Services/SharedPreferences.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import 'package:balanc_ed_2/Routes.dart';
@@ -581,16 +582,14 @@ class _MyProfileState extends State<MyProfile> {
               if (val != currIndex) {
                 currIndex = val;
                 if (val == 0) {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/HomePage', (Route<dynamic> route) => false);
+                  GoRouter.of(context).go("/home");
                 }
                 /*else if (val == 1) {
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       '/BudgetHomePage', (Route<dynamic> route) => false);
                 } */
                 else if (val == 1) {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/MyProfilePage', (Route<dynamic> route) => false);
+                  GoRouter.of(context).go("/profile");
                 }
               }
             });
