@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:balanc_ed_2/Constants/Fonts&Themes.dart';
+import 'package:go_router/go_router.dart';
 
 import 'PostCourse.dart';
 
@@ -165,7 +166,7 @@ class _PreCourseState extends State<PreCourse> {
             // ),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -173,7 +174,9 @@ class _PreCourseState extends State<PreCourse> {
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
                               Colors.deepPurple)),
-                      onPressed: () {},
+                      onPressed: () {
+                        GoRouter.of(context).go("/learning-page");
+                      },
                       child: const Text("Enroll this course",
                           style: TextStyle(color: Colors.white))),
                 )

@@ -76,11 +76,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
               SizedBox(
                 height: 0.02 * height,
               ),
-              Center(
+              const Center(
                 child: CircleAvatar(
                   radius: 90,
                   backgroundImage: AssetImage(
-                    "assets/profilepic.png",
+                    "assets/images/profile.png",
                   ),
                 ),
               ),

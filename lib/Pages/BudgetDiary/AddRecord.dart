@@ -294,8 +294,8 @@ class _AddRecordState extends State<AddRecord> {
                                     date.text, amt, title.text, " ", "Income");
                                 twilioService.setAccount();
                                 twilioService.sendSms();
-                                Navigator.pushNamed(
-                                    context, Routes.budgetHomePage);
+                                // Navigator.pushNamed(
+                                //     context, Routes.budgetHomePage);
                               },
                               child: Container(
                                 height: 0.07 * height,
@@ -522,8 +522,8 @@ class _AddRecordState extends State<AddRecord> {
                                   await postServices.addTransaction(date.text,
                                       amt, category.text, " ", "Expense");
                                   twilioService.sendSms();
-                                  Navigator.pushNamed(
-                                      context, Routes.budgetHomePage);
+                                  // Navigator.pushNamed(
+                                  //     context, Routes.budgetHomePage);
                                 },
                                 child: Container(
                                   height: 0.07 * height,
