@@ -1,3 +1,4 @@
+import 'package:balanc_ed_2/Pages/ChatPage/ChatPage.dart';
 import 'package:balanc_ed_2/Pages/Profile/MyProfile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +20,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   @override
   void initState() {
     // TODO: implement initState
@@ -35,8 +34,9 @@ class _HomePageState extends State<HomePage> {
       case 0:
         return const CoursesPage();
       case 1:
+        return const ChatPage();
+      case 2:
         return const MyProfile();
-
     }
     return const CoursesPage();
   }
@@ -64,18 +64,16 @@ class _HomePageState extends State<HomePage> {
             });
           },
           selectedIconTheme: IconThemeData(color: Colors.black),
-          items: [
+          items: const [
             BottomNavigationBarItem(
               label: "Home",
               icon: Icon(Icons.home),
             ),
-            /*   BottomNavigationBarItem(
-                label: "Budget",
-                icon: Icon(Icons.account_balance_wallet_outlined)),*/
+            BottomNavigationBarItem(
+                label: "Chat", icon: Icon(Icons.chat_outlined)),
             BottomNavigationBarItem(label: "Profile", icon: Icon(Icons.person)),
           ],
-        )
-    );
+        ));
   }
 }
 
@@ -156,8 +154,7 @@ class _CoursesPageState extends State<CoursesPage> {
                                       border: Border.all(
                                           color: const Color(0xff22319e),
                                           width: 0.004 * width),
-                                      borderRadius:
-                                      BorderRadius.circular(20),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: const Padding(
                                       padding: EdgeInsets.all(12.0),
@@ -175,7 +172,8 @@ class _CoursesPageState extends State<CoursesPage> {
                                     //   news: snapshot.data[index],
                                     //   idx: index,
                                     // )));
-                                    GoRouter.of(context).push("/storypage?idx=$index&news=${snapshot.data![index]}");
+                                    GoRouter.of(context).push(
+                                        "/storypage?idx=$index&news=${snapshot.data![index]}");
                                   },
                                 ),
                                 SizedBox(
@@ -212,7 +210,8 @@ class _CoursesPageState extends State<CoursesPage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        GoRouter.of(context).push("/precourse?title=${courseTitle[index]}");
+                        GoRouter.of(context)
+                            .push("/precourse?title=${courseTitle[index]}");
                       },
                       child: Column(
                         children: [
@@ -226,8 +225,7 @@ class _CoursesPageState extends State<CoursesPage> {
                             child: Padding(
                               padding: EdgeInsets.all(13.0),
                               child: Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     courseTitle[index],
@@ -295,4 +293,3 @@ class _CoursesPageState extends State<CoursesPage> {
     );
   }
 }
-
