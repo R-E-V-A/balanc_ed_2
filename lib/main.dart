@@ -4,6 +4,7 @@ import 'package:balanc_ed_2/Pages/Profile/EditProfilePage.dart';
 import 'package:balanc_ed_2/Pages/Profile/MyProfile.dart';
 import 'package:balanc_ed_2/Pages/SingleCourse/LearningPage.dart';
 import 'package:balanc_ed_2/Pages/SingleCourse/PreCourse.dart';
+import 'package:balanc_ed_2/Pages/StoryPage.dart';
 import 'package:balanc_ed_2/Routes.dart';
 import 'package:balanc_ed_2/Services/SharedPreferences.dart';
 import 'package:flutter/material.dart';
@@ -50,28 +51,40 @@ class SplashScreen extends StatelessWidget {
         builder: (BuildContext context, GoRouterState state) =>
             const OnboardingPage()),
     GoRoute(
-      path: "/home",
-      builder: (BuildContext context, GoRouterState state) => const HomePage()
-    ),
+        path: "/home",
+        builder: (BuildContext context, GoRouterState state) =>
+            const HomePage()),
+    GoRoute(
+        path: "/home/storypage",
+        builder: (BuildContext context, state) {
+          var _idx = state.queryParams["index"];
+          var _news = state.queryParams["news"];
+          return StoryPage(
+            news: _news as dynamic,
+            idx: _idx as int,
+          );
+        }),
     GoRoute(
         path: "/profile",
-        builder: (BuildContext context, GoRouterState state) => const MyProfile()
-    ),
+        builder: (BuildContext context, GoRouterState state) =>
+            const MyProfile()),
     GoRoute(
         path: "/profile/edit",
-        builder: (BuildContext context, GoRouterState state) => const EditProfilePage()
-    ),
+        builder: (BuildContext context, GoRouterState state) =>
+            const EditProfilePage()),
     GoRoute(
         path: "/profile/bookmarks",
-        builder: (BuildContext context, GoRouterState state) => const BookmarksScreen()
-    ),
+        builder: (BuildContext context, GoRouterState state) =>
+            const BookmarksScreen()),
     GoRoute(
         path: "/learning-page",
-        builder: (BuildContext context, GoRouterState state) => LearningPage(titleText: "Some title")
-    ),
-    GoRoute(path: "/precourse", builder: (BuildContext context, state) {
-      var _title = state.queryParams["title"];
-      return PreCourse(titleText: _title!);
-    })
+        builder: (BuildContext context, GoRouterState state) =>
+            LearningPage(titleText: "Some title")),
+    GoRoute(
+        path: "/precourse",
+        builder: (BuildContext context, state) {
+          var _title = state.queryParams["title"];
+          return PreCourse(titleText: _title!);
+        }),
   ]);
 }

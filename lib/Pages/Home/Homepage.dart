@@ -154,13 +154,13 @@ class _CoursesPageState extends State<CoursesPage> {
                                     height: 0.1 * height,
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                          color: Color(0xff22319e),
+                                          color: const Color(0xff22319e),
                                           width: 0.004 * width),
                                       borderRadius:
                                       BorderRadius.circular(20),
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(12.0),
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(12.0),
                                       child: Image(
                                         fit: BoxFit.contain,
                                         image: AssetImage(
@@ -175,6 +175,7 @@ class _CoursesPageState extends State<CoursesPage> {
                                     //   news: snapshot.data[index],
                                     //   idx: index,
                                     // )));
+                                    GoRouter.of(context).push("/storypage?idx=$index&news=${snapshot.data![index]}");
                                   },
                                 ),
                                 SizedBox(
@@ -211,13 +212,6 @@ class _CoursesPageState extends State<CoursesPage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => PreCourse(
-                        //           titleText: courseTitle[index],
-                        //         )));
-
                         GoRouter.of(context).push("/precourse?title=${courseTitle[index]}");
                       },
                       child: Column(
