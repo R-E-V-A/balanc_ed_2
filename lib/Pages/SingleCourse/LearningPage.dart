@@ -9,6 +9,7 @@ import 'package:flutter/widgets.dart';
 // import 'package:resolvers/Constants/Fonts&Themes.dart';
 import 'package:balanc_ed_2/Services/TwilioServices.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:go_router/go_router.dart';
 
 // import 'package:draggable_bottom_sheet/draggable_bottom_sheet.dart';
 import 'package:video_player/video_player.dart';
@@ -95,27 +96,26 @@ class _LearningPageState extends State<LearningPage> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
-        // blurBackground: true,
-        // scrollDirection: Axis.vertical,
-        // expansionExtent: 1.0,
-        // backgroundWidget: Padding(
-        //   padding: EdgeInsets.only(
-        //       top: 0.05 * height, left: 0.07 * width, right: 0.07 * width),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Column(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: 50.0,
+          ),
+          Row(
+            children: [
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Lesson 1",
                       style: paraText.copyWith(
                           color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900),
                     ),
                     Text(
                       widget.titleText,
@@ -126,55 +126,50 @@ class _LearningPageState extends State<LearningPage> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  width: 0.32 * width,
+              ),
+              Expanded(child: Container()),
+
+              IconButton(
+                icon: Icon(
+                  isSpeaking ? Icons.volume_off : Icons.volume_up,
+                  size: 35,
                 ),
-                Expanded(
-                  child: IconButton(
-                    icon: Icon(
-                      isSpeaking ? Icons.volume_off : Icons.volume_up,
-                      size: 35,
-                    ),
-                    color: Colors.black,
-                    onPressed: () async {
-                      await isSpeaking ? stop() : speak();
-                    },
-                  ),
+                color: Colors.black,
+                onPressed: () async {
+                  await isSpeaking ? stop() : speak();
+                },
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.close_rounded,
+                  size: 35,
                 ),
-                SizedBox(
-                  width: 0.032 * width,
-                ),
-                Expanded(
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.close,
-                      size: 35,
-                    ),
-                    color: Colors.black,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 0.04 * height,
-            ),
-            Container(
-              width: 0.95 * width,
-              height: 0.2 * height,
-              decoration: BoxDecoration(
-                  color: Color(0xfff2ebe8),
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                    image: AssetImage("assets/learning.png"),
-                  )),
-            ),
-            SizedBox(
-              height: 0.04 * height,
-            ),
-            Text(
+                color: Colors.black,
+                onPressed: () {
+                  context.pop();
+                },
+              )
+            ],
+          ),
+          SizedBox(
+            height: 0.04 * height,
+          ),
+          Container(
+            width: 0.95 * width,
+            height: 0.2 * height,
+            decoration: BoxDecoration(
+                color: Color(0xfff2ebe8),
+                borderRadius: BorderRadius.circular(30),
+                image: const DecorationImage(
+                  image: AssetImage("assets/images/learning.png"),
+                )),
+          ),
+          SizedBox(
+            height: 0.04 * height,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
               "Budgeting can help you optimize your shopping decisions upto 25%",
               style: paraText.copyWith(
                   color: Color(0xff1c2031),
@@ -182,16 +177,19 @@ class _LearningPageState extends State<LearningPage> {
                   fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
-            Text(
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 24.0),
+            child: Text(
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor ipsum phasellus diam eu mi, elementum. Pellentesque dapibus nisi auctor vitae ut congue facilisis metus.",
               style: paraText.copyWith(color: Color(0xff9c9c9c), fontSize: 15),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
-              height: 0.02 * height,
-            ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 0.02 * height,
+          ),
+        ],
       ),
       // expandedChild: Container(
       //   color: Color(0xff22319e),

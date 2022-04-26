@@ -175,7 +175,7 @@ class _PreCourseState extends State<PreCourse> {
                           backgroundColor: MaterialStateProperty.all<Color>(
                               Colors.deepPurple)),
                       onPressed: () {
-                        GoRouter.of(context).go("/learning-page");
+                        GoRouter.of(context).push("/learning-page");
                       },
                       child: const Text("Enroll this course",
                           style: TextStyle(color: Colors.white))),

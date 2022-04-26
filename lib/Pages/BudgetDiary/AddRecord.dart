@@ -375,7 +375,7 @@ class _AddRecordState extends State<AddRecord> {
                                             val = int.parse(x.toString());
                                           });
                                         },
-                                        items: [
+                                        items: const [
                                           DropdownMenuItem(
                                             value: 1,
                                             child: Text("General"),
